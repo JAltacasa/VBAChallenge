@@ -80,11 +80,11 @@ Sub StockData()
         
         ' Determine the Last Row of Yearly Change per worksheet
         
-        YCLastRow = ws.Cells(Rows.Count, Column + 8).End(xlUp).Row
+        YearlyChange_LasRow = ws.Cells(Rows.Count, Column + 8).End(xlUp).Row
         
         'set colors
         
-        For j = 2 To YCLastRow
+        For j = 2 To YearlyChange_LasRow
             If (Cells(j, Column + 9).Value > 0 Or Cells(j, Column + 9).Value = 0) Then
                 Cells(j, Column + 9).Interior.ColorIndex = 10
                 
@@ -96,6 +96,7 @@ Sub StockData()
         Next j
         
     'Define cell names for the bonus part
+    
         Cells(2, Column + 14).Value = "Greatest % Increase"
         Cells(3, Column + 14).Value = "Greatest % Decrease"
         Cells(4, Column + 14).Value = "Greatest Total Volume"
@@ -103,16 +104,17 @@ Sub StockData()
         Cells(1, Column + 16).Value = "Value"
         
     'Finding the greatest value and its ticker
-        For Z = 2 To YCLastRow
-            If Cells(Z, Column + 10).Value = Application.WorksheetFunction.Max(ws.Range("K2:K" & YCLastRow)) Then
+    
+        For Z = 2 To YearlyChange_LasRow
+            If Cells(Z, Column + 10).Value = Application.WorksheetFunction.Max(ws.Range("K2:K" & YearlyChange_LasRow)) Then
                 Cells(2, Column + 15).Value = Cells(Z, Column + 8).Value
                 Cells(2, Column + 16).Value = Cells(Z, Column + 10).Value
                 Cells(2, Column + 16).NumberFormat = "0.00%"
-            ElseIf Cells(Z, Column + 10).Value = Application.WorksheetFunction.Min(ws.Range("K2:K" & YCLastRow)) Then
+            ElseIf Cells(Z, Column + 10).Value = Application.WorksheetFunction.Min(ws.Range("K2:K" & YearlyChange_LasRow)) Then
                 Cells(3, Column + 15).Value = Cells(Z, Column + 8).Value
                 Cells(3, Column + 16).Value = Cells(Z, Column + 10).Value
                 Cells(3, Column + 16).NumberFormat = "0.00%"
-            ElseIf Cells(Z, Column + 11).Value = Application.WorksheetFunction.Max(ws.Range("L2:L" & YCLastRow)) Then
+            ElseIf Cells(Z, Column + 11).Value = Application.WorksheetFunction.Max(ws.Range("L2:L" & YearlyChange_LasRow)) Then
                 Cells(4, Column + 15).Value = Cells(Z, Column + 8).Value
                 Cells(4, Column + 16).Value = Cells(Z, Column + 11).Value
             End If
