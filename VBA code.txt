@@ -105,20 +105,20 @@ Sub StockData()
         
     'Finding the greatest value and its ticker
     
-        For Z = 2 To YearlyChange_LasRow
-            If Cells(Z, Column + 10).Value = Application.WorksheetFunction.Max(ws.Range("K2:K" & YearlyChange_LasRow)) Then
+        For Y = 2 To YearlyChange_LasRow
+            If Cells(Y, Column + 10).Value = Application.WorksheetFunction.Max(ws.Range("K2:K" & YearlyChange_LasRow)) Then
                 Cells(2, Column + 15).Value = Cells(Z, Column + 8).Value
                 Cells(2, Column + 16).Value = Cells(Z, Column + 10).Value
                 Cells(2, Column + 16).NumberFormat = "0.00%"
-            ElseIf Cells(Z, Column + 10).Value = Application.WorksheetFunction.Min(ws.Range("K2:K" & YearlyChange_LasRow)) Then
+            ElseIf Cells(Y, Column + 10).Value = Application.WorksheetFunction.Min(ws.Range("K2:K" & YearlyChange_LasRow)) Then
                 Cells(3, Column + 15).Value = Cells(Z, Column + 8).Value
                 Cells(3, Column + 16).Value = Cells(Z, Column + 10).Value
                 Cells(3, Column + 16).NumberFormat = "0.00%"
-            ElseIf Cells(Z, Column + 11).Value = Application.WorksheetFunction.Max(ws.Range("L2:L" & YearlyChange_LasRow)) Then
+            ElseIf Cells(Y, Column + 11).Value = Application.WorksheetFunction.Max(ws.Range("L2:L" & YearlyChange_LasRow)) Then
                 Cells(4, Column + 15).Value = Cells(Z, Column + 8).Value
                 Cells(4, Column + 16).Value = Cells(Z, Column + 11).Value
             End If
-        Next Z
+        Next Y
         
     Next ws
         
